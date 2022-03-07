@@ -1,0 +1,153 @@
+{
+    "characters": [
+        {
+            "name": "Albedo",
+            "element": [4],
+            "weapon": [0],
+            "gem1": [24],
+            "gem2": [25],
+            "gem3": [26],
+            "gem4": [27],
+            "localMat": [1],
+            "monsterCharacterMat1": [6],
+            "monsterCharacterMat2": [7],
+            "monsterCharacterMat3": [8],
+            "bossMat": [5]
+        },
+        {
+            "name": "Aloy"
+        },
+        {
+            "name": "Amber"
+        },
+        {
+            "name": "Arataki Itto"
+        },
+        {
+            "name": "Barbara"
+        },
+        {
+            "name": "Beidou"
+        },
+        {
+            "name": "Bennett"
+        },
+        {
+            "name": "Chongyun"
+        },
+        {
+            "name": "Diluc"
+        },
+        {
+            "name": "Diona"
+        },
+        {
+            "name": "Eula"
+        },
+        {
+            "name": "Fischl"
+        },
+        {
+            "name": "Ganyu"
+        },
+        {
+            "name": "Gorou"
+        },
+        {
+            "name": "Hu Tao"
+        },
+        {
+            "name": "Jean"
+        },
+        {
+            "name": "Kaedehara Kazuha"
+        },
+        {
+            "name": "Kaeya"
+        },
+        {
+            "name": "Kamisato Ayaka"
+        },
+        {
+            "name": "Keqing"
+        },
+        {
+            "name": "Klee"
+        },
+        {
+            "name": "Kujou Sara"
+        },
+        {
+            "name": "Lisa"
+        },
+        {
+            "name": "Mona"
+        },
+        {
+            "name": "Ningguang"
+        },
+        {
+            "name": "Noelle"
+        },
+        {
+            "name": "Qiqi"
+        },
+        {
+            "name": "Raiden Shogun"
+        },
+        {
+            "name": "Razor"
+        },
+        {
+            "name": "Rosaria"
+        },
+        {
+            "name": "Sangonomiya Kokomi"
+        },
+        {
+            "name": "Sayu"
+        },
+        {
+            "name": "Shenhe"
+        },
+        {
+            "name": "Sucrose"
+        },
+        {
+            "name": "Tartaglia"
+        },
+        {
+            "name": "Thoma"
+        },
+        {
+            "name": "Venti"
+        },
+        {
+            "name": "Xiangling"
+        },
+        {
+            "name": "Xiao"
+        },
+        {
+            "name": "Xingqiu"
+        },
+        {
+            "name": "Xinyan"
+        },
+        {
+            "name": "Yae Miko"
+        },
+        {
+            "name": "Yanfei"
+        },
+        {
+            "name": "Yoimiya"
+        },
+        {
+            "name": "Yun Jin"
+        },
+        {
+            "name": "Zhongli"
+        }
+    ]
+}
