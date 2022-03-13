@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import AllInputs from './components/AllInputs';
+import PrimoCalculatorInputs from './components/PrimoCalculatorInputs';
 import './App.css';
 import Navbar from './components/Navbar';
 import AscensionCalc from './components/AscensionCalc';
+import SpentMoraCalc from './components/SpentMoraCalc';
 
 const App = () => {
     const [calcData, setCalcData] = useState({
@@ -30,8 +31,7 @@ const App = () => {
         currGreenMat: 0,
         reqPurpleMat: 0,
         reqBlueMat: 0,
-        reqGreenMat: 0,
-        radioChecked: "rareMat"
+        reqGreenMat: 0
     });
 
     const [ascCalcResults, setAscCalcResults] = useState({
@@ -136,9 +136,6 @@ const App = () => {
     const calculateAscMats = (e) => {
         e.preventDefault();
 
-        let totalCurrGreenMats = ascCalcData.currGreenMat + (ascCalcData.currBlueMat * 3) + (ascCalcData.currPurpleMat * 9);
-        let totalReqGreenMats = ascCalcData.reqGreenMat + (ascCalcData.reqBlueMat * 3) + (ascCalcData.reqPurpleMat * 9);
-
         let currPurpleMat = ascCalcData.currPurpleMat;
         let reqPurpleMat = ascCalcData.reqPurpleMat;
         let currBlueMat = ascCalcData.currBlueMat;
@@ -146,30 +143,51 @@ const App = () => {
         let currGreenMat = ascCalcData.currGreenMat;
         let reqGreenMat = ascCalcData.reqGreenMat;
 
-        if (totalCurrGreenMats < totalReqGreenMats) {
-            if (currPurpleMat > reqPurpleMat) {
-                setAscCalcResults( ...ascCalcResults, {
-                    neededPurpleMat: 0
-                });
-            } else {
-                let reqCurrPurpleDiff = reqPurpleMat - currPurpleMat;
-                let blueAndGreenTotal = currBlueMat * 3 + currGreenMat;
+        let greenRemainder = 0;
+        let blueRemainder = 0;
 
-                
-            }
-
-            // if (ascCalcData.radioChecked === "commonMat") {
-                
-            // } else if (ascCalcData.radioChecked === "rareMat") {
-                
-            // }
-        } else {
-            setAscCalcResults({
-                neededPurpleMat: 0,
-                neededBlueMat: 0,
+        if (currGreenMat >= reqGreenMat) {
+            setAscCalcResults(ascCalcResults => ({
+                ...ascCalcResults,
                 neededGreenMat: 0
-            });
-            console.log("Required is less than or equal to current");
+            }));
+            greenRemainder = currGreenMat - reqGreenMat;
+            if (greenRemainder >= 3) {
+                currBlueMat += (greenRemainder - (greenRemainder % 3)) / 3;
+            }
+        } else if (reqGreenMat > currGreenMat) {
+            setAscCalcResults(ascCalcResults => ({
+                ...ascCalcResults,
+                neededGreenMat: reqGreenMat - currGreenMat
+            }));
+        }
+
+        if (currBlueMat >= reqBlueMat) {
+            setAscCalcResults(ascCalcResults => ({
+                ...ascCalcResults,
+                neededBlueMat: 0
+            }));
+            blueRemainder = currBlueMat - reqBlueMat;
+            if (blueRemainder >= 3) {
+                currPurpleMat += (blueRemainder - (blueRemainder % 3)) / 3;
+            }
+        } else if (reqBlueMat > currBlueMat) {
+            setAscCalcResults(ascCalcResults => ({
+                ...ascCalcResults,
+                neededBlueMat: reqBlueMat - currBlueMat
+            }));
+        }
+
+        if (currPurpleMat >= reqPurpleMat) {
+            setAscCalcResults(ascCalcResults => ({
+                ...ascCalcResults,
+                neededPurpleMat: 0
+            }));
+        } else if (reqPurpleMat > currPurpleMat) {
+            setAscCalcResults(ascCalcResults => ({
+                ...ascCalcResults,
+                neededPurpleMat: reqPurpleMat - currPurpleMat
+            }));
         }
     }
 
@@ -181,12 +199,20 @@ const App = () => {
                     <AscensionCalc ascCalcData={ascCalcData} ascCalcResults={ascCalcResults} onChangeHandlerAscCalcData={onChangeHandlerAscCalcData} calculateAscMats={calculateAscMats} />
                 </div>
             )
+        
+        case "spentMoraCalc":
+            return (
+                <div className="App container-fluid">
+                    <Navbar setView={setView} />
+                    <SpentMoraCalc />
+                </div>
+            )
     
         default:
             return (
                 <div className="App container-fluid">
                     <Navbar setView={setView} />
-                    <AllInputs calcData={calcData} wishResults={wishResults} onChangeHandlerCalcData={onChangeHandlerCalcData} calculateWishes={calculateWishes} onEnterPress={onEnterPress} />
+                    <PrimoCalculatorInputs calcData={calcData} wishResults={wishResults} onChangeHandlerCalcData={onChangeHandlerCalcData} calculateWishes={calculateWishes} onEnterPress={onEnterPress} />
                 </div>
             )
     }

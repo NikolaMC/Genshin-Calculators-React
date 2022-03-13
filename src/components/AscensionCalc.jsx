@@ -2,7 +2,7 @@ import React from 'react';
 
 const AscensionCalc = ({ ascCalcData, ascCalcResults, onChangeHandlerAscCalcData, calculateAscMats }) => {
     return ( 
-        <div className="col-md-7 col-lg-6 p-3 g-3 mt-3 mx-auto shadow border border-dark rounded calc-box">
+        <div className="col-md-7 col-lg-8 p-3 g-3 mt-3 mx-auto shadow border border-dark rounded calc-box">
             <div className="row g-3 align-items-center justify-content-center mb-1">
                 <div className="col-4">
                     <label htmlFor="current-purple-mat-id" className="col-form-label">Current purple material:</label>
@@ -31,16 +31,6 @@ const AscensionCalc = ({ ascCalcData, ascCalcResults, onChangeHandlerAscCalcData
                     <label htmlFor="required-green-mat-id" className="col-form-label">Required green material:</label>
                     <input type="number" id="required-green-mat-id" className="form-control" name="reqGreenMat" defaultValue={ascCalcData.reqGreenMat} min="0" onChange={onChangeHandlerAscCalcData} />
                 </div>
-            </div>
-
-            <div className="mt-3 form-check" title="Maybe coming soon. For now, the rare materials are prioritized">
-                <input type="radio" id="common-mat-radio-id" className="form-check-input" name="ascMatRadio" value="commonMat" onChange={onChangeHandlerAscCalcData} disabled />
-                <label htmlFor="common-mat-radio-id" className="form-check-label">Prioritize common materials</label>
-            </div>
-
-            <div className="mt-1 form-check" title="Maybe coming soon. For now, the rare materials are prioritized">
-                <input type="radio" id="rare-mat-radio-id" className="form-check-input" name="ascMatRadio" value="rareMat" onChange={onChangeHandlerAscCalcData} disabled />
-                <label htmlFor="rare-mat-radio-id" className="form-check-label">Prioritize rare materials</label>
             </div>
 
             <div className="row g-3 align-items-center col-3 mx-auto my-1 shadow">

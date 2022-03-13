@@ -7,3 +7,12 @@ body {
 .calc-box, nav {
     background: rgb(63, 63, 63);
 }
+
+.upload-file-input {
+    background: rgb(63, 63, 63);
+    color: #fff;
+}
+
+a {
+    text-shadow: none;
+}

@@ -1,8 +1,8 @@
 import React from "react";
 
-const AllInputs = ({ calcData, wishResults, onChangeHandlerCalcData, calculateWishes, onEnterPress }) => {
+const PrimoCalculatorInputs = ({ calcData, wishResults, onChangeHandlerCalcData, calculateWishes, onEnterPress }) => {
     return (
-        <div className="col-md-7 col-lg-6 p-3 g-3 mt-3 mx-auto shadow border border-dark rounded calc-box" onKeyPress={onEnterPress} >
+        <div className="col-md-7 col-lg-8 p-3 g-3 mt-3 mx-auto shadow border border-dark rounded calc-box" onKeyPress={onEnterPress} >
             <div className="row g-3 align-items-center justify-content-center mb-1">
                 <div className="col-auto">
                     <label htmlFor="current-primos-id" className="col-form-label">Current primogems:</label>
@@ -107,4 +107,4 @@ const AllInputs = ({ calcData, wishResults, onChangeHandlerCalcData, calculateWi
     )
 }
 
-export default AllInputs;
+export default PrimoCalculatorInputs;
