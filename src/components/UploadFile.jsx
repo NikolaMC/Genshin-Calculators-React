@@ -25,7 +25,7 @@ const UploadFile = ({ setFileData }) => {
     return (
 
         <div className="row g-3 align-items-center justify-content-center mb-1">
-            <div className="col-5 mx-auto">
+            <div className="col-lg-6 mx-auto">
                 <input type="file" className="form-control upload-file-input" accept=".json" onChange={handleChange} />
             </div>
         </div>
