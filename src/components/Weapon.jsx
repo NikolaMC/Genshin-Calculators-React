@@ -9,7 +9,7 @@ const Weapon = ({ weapon, checkRarity, getWeaponUpgradeCost, setTotalWeaponUpgra
     }, []);
 
     return (
-        <div className='card col-3 bg-dark mx-2 mb-3'>
+        <div className='card col-lg-3 col-md-5 bg-dark mx-2 mb-3'>
             <div className='card-body'>
                 <h4 className='card-title'>{weapon.key.replace(/([A-Z])/g, ' $1').trim()}</h4>
                 <p className='card-text'><strong>Lvl:</strong> {weapon.level}</p>

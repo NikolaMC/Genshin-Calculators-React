@@ -1,14 +1,107 @@
-import React from "react";
+import React, { useState } from "react";
 
-const PrimoCalculatorInputs = ({ calcData, wishResults, onChangeHandlerCalcData, calculateWishes, onEnterPress }) => {
+const PrimoCalculatorInputs = () => {
+
+    const [calcData, setCalcData] = useState({
+        currentPrimos: 0,
+        extraPrimos: 0,
+        currentStarglitter: 0,
+        currentFates: 0,
+        currentPity: 0,
+        abyssChambers: 0,
+        days: 0,
+        addStardustWishes: false,
+        welkin: false,
+        commissions: false
+    });
+
+    const [wishResults, setWishResults] = useState({
+        availableWishes: 0,
+        toFirstHardPity: 0,
+        afterFirstHardPity: 0
+    });
+
+    const onChangeHandlerCalcData = (e) => {
+        if (e.target.type === "checkbox") {
+            setCalcData({ ...calcData, [e.target.name]: e.target.checked });
+        } else {
+            if (e.target.value === "") {
+                setCalcData({ ...calcData, [e.target.name]: 0 });
+            } else {
+                setCalcData({ ...calcData, [e.target.name]: Math.abs(e.target.value) });
+            }
+        }
+    }
+
+    const addStardustWishes = () => {
+        let wishesToAdd = 0;
+
+        let start = new Date();
+        let end = new Date(start.getFullYear(), start.getMonth(), start.getDate() + calcData.days);
+
+        while (start <= end) {
+            start.setDate(start.getDate() + 1);
+
+            if (start.getDate() === 1) {
+                wishesToAdd += 5;
+            }
+        }
+
+        return wishesToAdd;
+    }
+
+    const calculateWishes = (e) => {
+        e.preventDefault();
+
+        let primoSum = 0;
+
+        primoSum += (calcData.currentPrimos + (calcData.abyssChambers * 50)) + ((calcData.currentStarglitter / 5) * 160) + calcData.extraPrimos;
+
+        if (calcData.welkin && calcData.commissions) {
+            primoSum += 150 * calcData.days;
+        } else if (calcData.commissions) {
+            primoSum += 60 * calcData.days;
+        } else if (calcData.welkin) {
+            primoSum += 90 * calcData.days;
+        }
+
+        let wishCount = Math.floor(calcData.currentFates + (primoSum / 160));
+
+        if (calcData.addStardustWishes) {
+            wishCount += addStardustWishes();
+        }
+
+        let pityLeft = 0;
+
+        if (calcData.currentPity > 0 && calcData.currentPity < 91) {
+            pityLeft = 90 - calcData.currentPity;
+        } else if (calcData.currentPity > 90) {
+            pityLeft = 90;
+        } else {
+            pityLeft = 90;
+        }
+
+        let wishesAfterPity = wishCount - pityLeft;
+
+        if (wishesAfterPity < 0) {
+            wishesAfterPity = 0;
+        }
+
+        setWishResults({
+            availableWishes: wishCount,
+            toFirstHardPity: pityLeft,
+            afterFirstHardPity: wishesAfterPity
+        });
+    }
+
     return (
-        <div className="col-md-7 col-lg-8 p-3 g-3 mt-3 mx-auto shadow border border-dark rounded calc-box" onKeyPress={onEnterPress} >
+        <div className="col-md-7 col-lg-8 p-3 g-3 mt-3 mx-auto shadow border border-dark rounded calc-box">
             <div className="row g-3 align-items-center justify-content-center mb-1">
                 <div className="col-auto">
                     <label htmlFor="current-primos-id" className="col-form-label">Current primogems:</label>
                 </div>
                 <div className="col-auto">
-                    <input type="number" id="current-primos-id" className="form-control" name="currentPrimos" min="0" defaultValue={calcData.currentPrimos} onChange={onChangeHandlerCalcData} onKeyPress={onEnterPress} />
+                    <input type="number" id="current-primos-id" className="form-control" name="currentPrimos" min="0" defaultValue={calcData.currentPrimos} onChange={onChangeHandlerCalcData} />
                 </div>
             </div>
 
@@ -17,7 +110,7 @@ const PrimoCalculatorInputs = ({ calcData, wishResults, onChangeHandlerCalcData,
                     <label htmlFor="extra-primos-id" className="col-form-label">Extra primogems:</label>
                 </div>
                 <div className="col-auto">
-                    <input type="number" id="extra-primos-id" className="form-control" name="extraPrimos" min="0" defaultValue={calcData.extraPrimos} onChange={onChangeHandlerCalcData} onKeyPress={onEnterPress} />
+                    <input type="number" id="extra-primos-id" className="form-control" name="extraPrimos" min="0" defaultValue={calcData.extraPrimos} onChange={onChangeHandlerCalcData} />
                 </div>
             </div>
 
@@ -26,7 +119,7 @@ const PrimoCalculatorInputs = ({ calcData, wishResults, onChangeHandlerCalcData,
                     <label htmlFor="current-starglitter-id" className="col-form-label">Current starglitter:</label>
                 </div>
                 <div className="col-auto">
-                    <input type="number" id="current-starglitter-id" className="form-control" name="currentStarglitter" min="0" defaultValue={calcData.currentStarglitter} onChange={onChangeHandlerCalcData} onKeyPress={onEnterPress} />
+                    <input type="number" id="current-starglitter-id" className="form-control" name="currentStarglitter" min="0" defaultValue={calcData.currentStarglitter} onChange={onChangeHandlerCalcData} />
                 </div>
             </div>
 
@@ -35,7 +128,7 @@ const PrimoCalculatorInputs = ({ calcData, wishResults, onChangeHandlerCalcData,
                     <label htmlFor="current-fates-id" className="col-form-label">Current fates:</label>
                 </div>
                 <div className="col-auto">
-                    <input type="number" id="current-fates-id" className="form-control" name="currentFates" min="0" defaultValue={calcData.currentFates} onChange={onChangeHandlerCalcData} onKeyPress={onEnterPress} />
+                    <input type="number" id="current-fates-id" className="form-control" name="currentFates" min="0" defaultValue={calcData.currentFates} onChange={onChangeHandlerCalcData} />
                 </div>
             </div>
 
@@ -44,7 +137,7 @@ const PrimoCalculatorInputs = ({ calcData, wishResults, onChangeHandlerCalcData,
                     <label htmlFor="current-pity-id" className="col-form-label">Current pity:</label>
                 </div>
                 <div className="col-auto">
-                    <input type="number" id="current-pity-id" className="form-control" name="currentPity" min="0" defaultValue={calcData.currentPity} onChange={onChangeHandlerCalcData} onKeyPress={onEnterPress} />
+                    <input type="number" id="current-pity-id" className="form-control" name="currentPity" min="0" defaultValue={calcData.currentPity} onChange={onChangeHandlerCalcData} />
                 </div>
             </div>
 
@@ -53,7 +146,7 @@ const PrimoCalculatorInputs = ({ calcData, wishResults, onChangeHandlerCalcData,
                     <label htmlFor="abyss-chambers-id" className="col-form-label">Abyss chambers:</label>
                 </div>
                 <div className="col-auto">
-                    <input type="number" id="abyss-chambers-id" className="form-control" name="abyssChambers" min="0" defaultValue={calcData.abyssChambers} onChange={onChangeHandlerCalcData} onKeyPress={onEnterPress} />
+                    <input type="number" id="abyss-chambers-id" className="form-control" name="abyssChambers" min="0" defaultValue={calcData.abyssChambers} onChange={onChangeHandlerCalcData} />
                 </div>
             </div>
 
@@ -62,7 +155,7 @@ const PrimoCalculatorInputs = ({ calcData, wishResults, onChangeHandlerCalcData,
                     <label htmlFor="days-id" className="col-form-label">Number of days:</label>
                 </div>
                 <div className="col-auto">
-                    <input type="number" id="days-id" className="form-control" name="days" min="0" defaultValue={calcData.days} onChange={onChangeHandlerCalcData} onKeyPress={onEnterPress} />
+                    <input type="number" id="days-id" className="form-control" name="days" min="0" defaultValue={calcData.days} onChange={onChangeHandlerCalcData} />
                 </div>
             </div>
 
