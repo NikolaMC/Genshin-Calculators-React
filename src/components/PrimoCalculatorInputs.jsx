@@ -1,99 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-const PrimoCalculatorInputs = () => {
-
-    const [calcData, setCalcData] = useState({
-        currentPrimos: 0,
-        extraPrimos: 0,
-        currentStarglitter: 0,
-        currentFates: 0,
-        currentPity: 0,
-        abyssChambers: 0,
-        days: 0,
-        addStardustWishes: false,
-        welkin: false,
-        commissions: false
-    });
-
-    const [wishResults, setWishResults] = useState({
-        availableWishes: 0,
-        toFirstHardPity: 0,
-        afterFirstHardPity: 0
-    });
-
-    const onChangeHandlerCalcData = (e) => {
-        if (e.target.type === "checkbox") {
-            setCalcData({ ...calcData, [e.target.name]: e.target.checked });
-        } else {
-            if (e.target.value === "") {
-                setCalcData({ ...calcData, [e.target.name]: 0 });
-            } else {
-                setCalcData({ ...calcData, [e.target.name]: Math.abs(e.target.value) });
-            }
-        }
-    }
-
-    const addStardustWishes = () => {
-        let wishesToAdd = 0;
-
-        let start = new Date();
-        let end = new Date(start.getFullYear(), start.getMonth(), start.getDate() + calcData.days);
-
-        while (start <= end) {
-            start.setDate(start.getDate() + 1);
-
-            if (start.getDate() === 1) {
-                wishesToAdd += 5;
-            }
-        }
-
-        return wishesToAdd;
-    }
-
-    const calculateWishes = (e) => {
-        e.preventDefault();
-
-        let primoSum = 0;
-
-        primoSum += (calcData.currentPrimos + (calcData.abyssChambers * 50)) + ((calcData.currentStarglitter / 5) * 160) + calcData.extraPrimos;
-
-        if (calcData.welkin && calcData.commissions) {
-            primoSum += 150 * calcData.days;
-        } else if (calcData.commissions) {
-            primoSum += 60 * calcData.days;
-        } else if (calcData.welkin) {
-            primoSum += 90 * calcData.days;
-        }
-
-        let wishCount = Math.floor(calcData.currentFates + (primoSum / 160));
-
-        if (calcData.addStardustWishes) {
-            wishCount += addStardustWishes();
-        }
-
-        let pityLeft = 0;
-
-        if (calcData.currentPity > 0 && calcData.currentPity < 91) {
-            pityLeft = 90 - calcData.currentPity;
-        } else if (calcData.currentPity > 90) {
-            pityLeft = 90;
-        } else {
-            pityLeft = 90;
-        }
-
-        let wishesAfterPity = wishCount - pityLeft;
-
-        if (wishesAfterPity < 0) {
-            wishesAfterPity = 0;
-        }
-
-        setWishResults({
-            availableWishes: wishCount,
-            toFirstHardPity: pityLeft,
-            afterFirstHardPity: wishesAfterPity
-        });
-    }
-
+const PrimoCalculatorInputs = ({ calcData, onChangeHandlerCalcData, calculateWishes, wishResults }) => {
     return (
         <div className="col-md-7 col-lg-8 p-3 g-3 mt-3 mx-auto shadow border border-dark rounded calc-box">
             <div className="row g-3 align-items-center justify-content-center mb-1">
@@ -183,7 +90,7 @@ const PrimoCalculatorInputs = () => {
                 </div>
             </div>
 
-            <div className="row g-3 align-items-center col-3 mx-auto my-1 shadow">
+            <div className="row g-3 align-items-center col-lg-3 cl-md-6 mx-auto my-1 shadow">
                 <button type="button" className="btn btn-outline-light" onClick={calculateWishes}>Calculate</button>
             </div>
 

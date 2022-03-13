@@ -140,8 +140,8 @@ const SpentMoraCalc = ({ setFileData, weaponsRarityData, weaponMoraCostPerLevel,
                 <p>Upload a file in the GOOD format to see how much mora you spent on upgrading weapons, characters and artifacts</p>
                 <p>Here's a small list of automatic scanners that export in the GOOD format</p>
                 <div className='list-group mb-3 align-items-center'>
-                    <a className='btn btn-outline-light mb-2 col-3' href='https://github.com/Andrewthe13th/Inventory_Kamera' target="_blank" rel="noreferrer noopener">Inventory Kamera</a>
-                    <a className='btn btn-outline-light col-3' href='https://github.com/D1firehail/AdeptiScanner-GI' target="_blank" rel="noreferrer noopener">AdeptiScanner</a>
+                    <a className='btn btn-outline-light mb-2 col-lg-3 cl-md-6' href='https://github.com/Andrewthe13th/Inventory_Kamera' target="_blank" rel="noreferrer noopener">Inventory Kamera</a>
+                    <a className='btn btn-outline-light col-lg-3 cl-md-6' href='https://github.com/D1firehail/AdeptiScanner-GI' target="_blank" rel="noreferrer noopener">AdeptiScanner</a>
                 </div>
                 <p>Although the usage of these tools is virtually undetectable, just as with any tool that indirectly interacts with the game, there could still be a risk with using them</p>
                 <a className='btn btn-outline-light' href='https://genshin.hoyoverse.com/en/news/detail/5763' target="_blank" rel="noreferrer noopener">MiHoYo's official response to Script, Plug-In, and Third-Party Software Issues</a>
