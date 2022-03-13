@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import UploadFile from './UploadFile';
 import MoraResults from './MoraResults';
 import Weapon from './Weapon';
