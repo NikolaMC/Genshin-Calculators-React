@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/Genshin-Calculators-React/static/css/main.6dab95b6.chunk.css",
-    "main.js": "/Genshin-Calculators-React/static/js/main.ae69479c.chunk.js",
-    "main.js.map": "/Genshin-Calculators-React/static/js/main.ae69479c.chunk.js.map",
+    "main.js": "/Genshin-Calculators-React/static/js/main.61e7593e.chunk.js",
+    "main.js.map": "/Genshin-Calculators-React/static/js/main.61e7593e.chunk.js.map",
     "runtime-main.js": "/Genshin-Calculators-React/static/js/runtime-main.339b5ae5.js",
     "runtime-main.js.map": "/Genshin-Calculators-React/static/js/runtime-main.339b5ae5.js.map",
-    "static/js/2.b6a044ad.chunk.js": "/Genshin-Calculators-React/static/js/2.b6a044ad.chunk.js",
-    "static/js/2.b6a044ad.chunk.js.map": "/Genshin-Calculators-React/static/js/2.b6a044ad.chunk.js.map",
+    "static/js/2.5af9e6da.chunk.js": "/Genshin-Calculators-React/static/js/2.5af9e6da.chunk.js",
+    "static/js/2.5af9e6da.chunk.js.map": "/Genshin-Calculators-React/static/js/2.5af9e6da.chunk.js.map",
     "index.html": "/Genshin-Calculators-React/index.html",
     "static/css/main.6dab95b6.chunk.css.map": "/Genshin-Calculators-React/static/css/main.6dab95b6.chunk.css.map",
-    "static/js/2.b6a044ad.chunk.js.LICENSE.txt": "/Genshin-Calculators-React/static/js/2.b6a044ad.chunk.js.LICENSE.txt"
+    "static/js/2.5af9e6da.chunk.js.LICENSE.txt": "/Genshin-Calculators-React/static/js/2.5af9e6da.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.339b5ae5.js",
-    "static/js/2.b6a044ad.chunk.js",
+    "static/js/2.5af9e6da.chunk.js",
     "static/css/main.6dab95b6.chunk.css",
-    "static/js/main.ae69479c.chunk.js"
+    "static/js/main.61e7593e.chunk.js"
   ]
 }
