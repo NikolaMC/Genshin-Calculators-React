@@ -5,9 +5,9 @@ import AscensionCalc from './components/AscensionCalc';
 import SpentMoraCalc from './components/SpentMoraCalc';
 import './App.css';
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 const App = () => {
+
+    const [view, setView] = useState("");
 
     const [fileData, setFileData] = useState({
         weapons: [],
@@ -100,28 +100,40 @@ const App = () => {
         setArtifactMoraCostPerLevel(data);
     }
 
-    return (
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route path="/ascension-calc" element={<AscensionCalc />} />
-                <Route path="/spent-mora-calc" element={
-                                                        <SpentMoraCalc 
-                                                            setFileData={setFileData}
-                                                            weaponsRarityData={weaponsRarityData}
-                                                            weaponMoraCostPerLevel={weaponMoraCostPerLevel} 
-                                                            characterMoraCostPerLevel={characterMoraCostPerLevel} 
-                                                            artifactMoraCostPerLevel={artifactMoraCostPerLevel} 
-                                                            weapons={weapons}
-                                                            characters={characters}
-                                                            artifacts={artifacts}
-                                                        />    
-                                                        } 
-                />
-                <Route path="*" element={<PrimoCalculatorInputs />} />
-            </Routes>
-        </Router>
-    )
+    switch (view) {
+        case "ascCalc":
+            return (
+                <div className="App container-fluid">
+                    <Navbar setView={setView} />
+                    <AscensionCalc />
+                </div>
+            )
+        
+        case "spentMoraCalc":
+            return (
+                <div className="App container-fluid">
+                    <Navbar setView={setView} />
+                    <SpentMoraCalc 
+                        setFileData={setFileData}
+                        weaponsRarityData={weaponsRarityData}
+                        weaponMoraCostPerLevel={weaponMoraCostPerLevel} 
+                        characterMoraCostPerLevel={characterMoraCostPerLevel} 
+                        artifactMoraCostPerLevel={artifactMoraCostPerLevel} 
+                        weapons={weapons}
+                        characters={characters}
+                        artifacts={artifacts}
+                    />
+                </div>
+            )
+    
+        default:
+            return (
+                <div className="App container-fluid">
+                    <Navbar setView={setView} />
+                    <PrimoCalculatorInputs />
+                </div>
+            )
+    }
 
 }
 
