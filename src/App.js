@@ -153,15 +153,18 @@ const App = () => {
     }
 
     const [ascCalcData, setAscCalcData] = useState({
+        currGoldMat: 0,
         currPurpleMat: 0,
         currBlueMat: 0,
         currGreenMat: 0,
+        reqGoldMat: 0,
         reqPurpleMat: 0,
         reqBlueMat: 0,
         reqGreenMat: 0
     });
 
     const [ascCalcResults, setAscCalcResults] = useState({
+        neededGoldMat: 0,
         neededPurpleMat: 0,
         neededBlueMat: 0,
         neededGreenMat: 0
@@ -178,6 +181,8 @@ const App = () => {
     const calculateAscMats = (e) => {
         e.preventDefault();
 
+        let currGoldMat = ascCalcData.currGoldMat;
+        let reqGoldMat = ascCalcData.reqGoldMat;
         let currPurpleMat = ascCalcData.currPurpleMat;
         let reqPurpleMat = ascCalcData.reqPurpleMat;
         let currBlueMat = ascCalcData.currBlueMat;
@@ -187,6 +192,7 @@ const App = () => {
 
         let greenRemainder = 0;
         let blueRemainder = 0;
+        let purpleRemainder = 0;
 
         if (currGreenMat >= reqGreenMat) {
             setAscCalcResults(ascCalcResults => ({
@@ -225,10 +231,26 @@ const App = () => {
                 ...ascCalcResults,
                 neededPurpleMat: 0
             }));
+            purpleRemainder = currPurpleMat - reqPurpleMat;
+            if (purpleRemainder >= 3) {
+                currGoldMat += (purpleRemainder - (purpleRemainder % 3)) / 3;
+            }
         } else if (reqPurpleMat > currPurpleMat) {
             setAscCalcResults(ascCalcResults => ({
                 ...ascCalcResults,
                 neededPurpleMat: reqPurpleMat - currPurpleMat
+            }));
+        }
+
+        if (currGoldMat >= reqGoldMat) {
+            setAscCalcResults(ascCalcResults => ({
+                ...ascCalcResults,
+                neededGoldMat: 0
+            }));
+        } else if (reqGoldMat > currGoldMat) {
+            setAscCalcResults(ascCalcResults => ({
+                ...ascCalcResults,
+                neededGoldMat: reqGoldMat - currGoldMat
             }));
         }
     }
