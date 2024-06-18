@@ -66,7 +66,7 @@ const App = () => {
         currentStarglitter: 0,
         currentFates: 0,
         currentPity: 0,
-        abyssChambers: 0,
+        abyssFloors: 0,
         days: 0,
         addStardustWishes: false,
         welkin: false,
@@ -113,7 +113,7 @@ const App = () => {
 
         let primoSum = 0;
 
-        primoSum += (calcData.currentPrimos + (calcData.abyssChambers * 50)) + ((calcData.currentStarglitter / 5) * 160) + calcData.extraPrimos;
+        primoSum += (calcData.currentPrimos + (calcData.abyssFloors * 200)) + ((calcData.currentStarglitter / 5) * 160) + calcData.extraPrimos;
 
         if (calcData.welkin && calcData.commissions) {
             primoSum += 150 * calcData.days;
