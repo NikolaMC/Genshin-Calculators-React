@@ -48,12 +48,12 @@ const PrimoCalculatorInputs = ({ calcData, onChangeHandlerCalcData, calculateWis
                 </div>
             </div>
 
-            <div className="row g-3 align-items-center justify-content-center mb-1" title="Abyss chambers that you have not yet completed, 50 primogems per chamber">
+            <div className="row g-3 align-items-center justify-content-center mb-1" title="Abyss floors that you have not yet completed. Assumes full three stars per floor - 200 primogems per floor">
                 <div className="col-auto">
-                    <label htmlFor="abyss-chambers-id" className="col-form-label">Abyss chambers:</label>
+                    <label htmlFor="abyss-floors-id" className="col-form-label">Abyss floors:</label>
                 </div>
                 <div className="col-auto">
-                    <input type="number" id="abyss-chambers-id" className="form-control" name="abyssChambers" min="0" defaultValue={calcData.abyssChambers} onChange={onChangeHandlerCalcData} />
+                    <input type="number" id="abyss-floors-id" className="form-control" name="abyssFloors" min="0" defaultValue={calcData.abyssFloors} onChange={onChangeHandlerCalcData} />
                 </div>
             </div>
 

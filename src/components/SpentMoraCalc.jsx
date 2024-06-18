@@ -147,6 +147,7 @@ const SpentMoraCalc = ({ setFileData, weaponsRarityData, weaponMoraCostPerLevel,
                 <a className='btn btn-outline-light' href='https://genshin.hoyoverse.com/en/news/detail/5763' target="_blank" rel="noreferrer noopener">MiHoYo's official response to Script, Plug-In, and Third-Party Software Issues</a>
             </div>
             <div className="col-md-7 col-lg-8 p-3 g-3 mt-2 mx-auto shadow border border-dark rounded calc-box text-center">
+                <p>Last updated for version 4.7</p>
                 <UploadFile setFileData={setFileData} />
                 <MoraResults totalUpgradeCost={totalUpgradeCost} setTotalUpgradeCost={setTotalUpgradeCost} totalWeaponUpgradeCost={totalWeaponUpgradeCost} 
                     totalCharacterUpgradeCost={totalCharacterUpgradeCost} totalTalentUpgradeCost={totalTalentUpgradeCost} totalArtifactUpgradeCost={totalArtifactUpgradeCost} />
