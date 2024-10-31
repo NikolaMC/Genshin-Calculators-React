@@ -67,6 +67,8 @@ const App = () => {
         currentFates: 0,
         currentPity: 0,
         abyssFloors: 0,
+        theaterAct: 1,
+        theaterActsRepeat: 0,
         days: 0,
         addStardustWishes: false,
         welkin: false,
@@ -82,6 +84,8 @@ const App = () => {
     const onChangeHandlerCalcData = (e) => {
         if (e.target.type === "checkbox") {
             setCalcData({ ...calcData, [e.target.name]: e.target.checked });
+        } else if (e.target.name === "theaterAct") {
+            setCalcData({ ...calcData, [e.target.name]: e.target.value})
         } else {
             if (e.target.value === "") {
                 setCalcData({ ...calcData, [e.target.name]: 0 });
@@ -108,12 +112,53 @@ const App = () => {
         return wishesToAdd;
     }
 
+    const imaginariumTheaterCalc = () => {
+        let totalPrimosFromTheater = 0;
+
+        switch (+calcData.theaterAct) {            
+            case 1:
+                totalPrimosFromTheater += 60;
+                break;
+            case 2:
+                totalPrimosFromTheater += 120;
+                break;
+            case 3:
+                totalPrimosFromTheater += 220;
+                break;
+            case 4:
+                totalPrimosFromTheater += 280;
+                break;
+            case 5:
+                totalPrimosFromTheater += 340;
+                break;
+            case 6:
+                totalPrimosFromTheater += 440;
+                break;
+            case 7:
+                totalPrimosFromTheater += 500;
+                break;
+            case 8:
+                totalPrimosFromTheater += 620;
+                break;
+            case 9:
+                totalPrimosFromTheater += 680;
+                break;
+            case 10:
+                totalPrimosFromTheater += 800;
+                break;
+            default:
+                break;
+        }
+        
+        return totalPrimosFromTheater * calcData.theaterActsRepeat;
+    }
+
     const calculateWishes = (e) => {
         e.preventDefault();
 
         let primoSum = 0;
 
-        primoSum += (calcData.currentPrimos + (calcData.abyssFloors * 200)) + ((calcData.currentStarglitter / 5) * 160) + calcData.extraPrimos;
+        primoSum += (calcData.currentPrimos + (calcData.abyssFloors * 200)) + ((calcData.currentStarglitter / 5) * 160) + calcData.extraPrimos + imaginariumTheaterCalc();
 
         if (calcData.welkin && calcData.commissions) {
             primoSum += 150 * calcData.days;
